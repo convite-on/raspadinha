@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raspadinha - Prêmio</title>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" sizes="16x16">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0b67b3;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      min-height: 100vh;
+      padding-bottom: 20px;
+    }
+
+    /* HEADER */
+    header {
+      width: 100%;
+      background: #0c5397;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 60px;
+    }
+
+    header img {
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .barra-amarela {
+      width: 3px;
+      height: 20px;
+      border-radius: 6px;
+      background: #F7A600;
+      flex-shrink: 0;
+    }
+
+    .titulo-raspadinha {
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .user-info {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .saldo {
+      background: #2ccb74;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-weight: bold;
+      color: #fff;
+      font-size: 15px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .card-nome {
+      background: #ffffff;
+      padding: 10px 14px 10px 12px;
+      border-radius: 12px;
+      font-weight: 600;
+      color: #000;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex-shrink: 1;
+    }
+
+    .card-nome svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* CARD PRINCIPAL */
+    .card {
+      width: 92%;
+      max-width: 420px;
+      margin-top: 60px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      position: relative;
+      padding-top: 70px; /* Espaço extra no topo para o presente */
+    }
+
+    .presente-container {
+      position: absolute;
+      top: -50px; /* Metade fora do card */
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .presente-img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    }
+
+    .card-content {
+      text-align: center;
+      padding-top: 20px; /* Ajuste para compensar o espaço do presente */
+    }
+
+    .titulo-parabens {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .texto-descricao {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .valor-premio {
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: #045CA8;
+      margin-bottom: 15px;
+    }
+
+    .texto-instrucao {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .botao-raspar {
+      width: 100%;
+      background-color: #0A5BA7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 18px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .botao-raspar:hover {
+      background-color: #084A8A;
+    }
+
+    /* MOBILE AJUSTADO */
+    @media (max-width: 430px) {
+      header {
+        padding: 10px 14px;
+        gap: 10px;
+      }
+
+      .titulo-raspadinha {
+        font-size: 15px;
+      }
+
+      .saldo {
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+
+      .card-nome {
+        padding: 8px 12px;
+        font-size: 14px;
+        max-width: 95px;
+      }
+
+      .card {
+        padding: 15px;
+        padding-top: 60px;
+        margin-top: 50px;
+      }
+
+      .titulo-parabens {
+        font-size: 2.2rem;
+      }
+
+      .valor-premio {
+        font-size: 2.4rem;
+      }
+
+      .presente-img {
+        width: 90px;
+        height: 90px;
+      }
+      
+      .presente-container {
+        top: -45px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.webp" alt="Logo">
+
+    <div class="barra-amarela"></div>
+    <span class="titulo-raspadinha">Raspadinha</span>
+
+  </header>
+<br>
+<br>
+
+  <!-- CARD PRINCIPAL -->
+  <div class="card">
+    <div class="presente-container">
+      <img src="images/presente.webp" alt="Presente" class="presente-img">
+    </div>
+    
+    <div class="card-content">
+      <h1 class="titulo-parabens">Parabéns</h1>
+      <p class="texto-descricao">Você ganhou 3 raspadinhas gratuitas para raspar e ganhar até</p>
+      <h2 class="valor-premio">R$ 15.000,00</h2>
+      <p class="texto-instrucao">Raspe agora clicando no botão abaixo!</p>
+      <button class="botao-raspar" id="botaoRaspar">Começar a Raspar</button>
+    </div>
+  </div>
+
+  <script>
+    // Função para capturar as UTMs
+    function capturarUTMs() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utms = {};
+      
+      // Lista de UTMs a serem capturadas
+      const utmList = [
+        'utm_source',
+        'utm_medium', 
+        'utm_campaign',
+        'utm_term',
+        'utm_content'
+      ];
+      
+      // Capturar cada UTM da URL
+      utmList.forEach(utm => {
+        const valor = urlParams.get(utm);
+        if (valor && valor.trim() !== '') {
+          utms[utm] = valor.trim();
+        } else {
+          // Se não tiver a UTM específica, definir como 'direct'
+          utms[utm] = 'direct';
+        }
+      });
+      
+      return utms;
+    }
+    
+    // Função para construir URL de redirecionamento
+    function construirURL(utms) {
+      let baseUrl = 'identificao/index.html';
+      let params = new URLSearchParams();
+      
+      // Adicionar todas as UTMs à URL
+      Object.keys(utms).forEach(key => {
+        params.append(key, utms[key]);
+      });
+      
+      const queryString = params.toString();
+      return baseUrl + '?' + queryString;
+    }
+    
+    // Função de redirecionamento
+    function redirecionarParaIdentificacao() {
+      try {
+        // Capturar UTMs
+        const utms = capturarUTMs();
+        console.log('UTMs capturadas:', utms);
+        
+        // Construir URL
+        const urlDestino = construirURL(utms);
+        console.log('Redirecionando para:', urlDestino);
+        
+        // Atualizar botão
+        const botao = document.getElementById('botaoRaspar');
+        botao.textContent = 'Carregando...';
+        botao.disabled = true;
+        
+        // Redirecionar
+        setTimeout(() => {
+          window.location.href = urlDestino;
+        }, 300);
+        
+      } catch (error) {
+        console.error('Erro ao redirecionar:', error);
+        
+        // Restaurar botão
+        const botao = document.getElementById('botaoRaspar');
+        botao.textContent = 'Começar a Raspar';
+        botao.disabled = false;
+        
+        // Redirecionar para fallback
+        window.location.href = 'identificao/index.html?utm_source=direct&utm_medium=direct&utm_campaign=direct&utm_term=direct&utm_content=direct';
+      }
+    }
+    
+    // Configurar evento do botão
+    document.addEventListener('DOMContentLoaded', function() {
+      const botaoRaspar = document.getElementById('botaoRaspar');
+      
+      if (botaoRaspar) {
+        botaoRaspar.addEventListener('click', redirecionarParaIdentificacao);
+      }
+      
+      // Armazenar UTMs para referência futura
+      const utmsCapturadas = capturarUTMs();
+      console.log('UTMs capturadas:', utmsCapturadas);
+      sessionStorage.setItem('utm_params', JSON.stringify(utmsCapturadas));
+    });
+  </script>
+
+
+</body></html>
